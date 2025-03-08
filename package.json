@@ -1,6 +1,6 @@
 {
   "name": "astro-fix-paths",
-  "version": "1.0.2b",
+  "version": "1.0.3",
   "description": "An AstroJS integration that fixes output paths for Itch.io deployment.",
   "repository": "https://github.com/ArtechFuz3D/astro-fix-paths",
   "homepage": "https://github.com/ArtechFuz3D/astro-fix-paths",
