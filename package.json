@@ -1,0 +1,13 @@
+{
+  "name": "astro-fix-paths",
+  "version": "1.0.2",
+  "description": "An AstroJS integration that fixes output paths for Itch.io deployment.",
+  "main": "astro-fix-paths.js",
+  "type": "module",
+  "exports": {
+    "default": "./astro-fix-paths.js"
+  },
+  "keywords": ["astro-component", "withastro", "astro", "astrojs", "integration", "fix-paths", "itchio"],
+  "author": "Neill Hewitt",
+  "license": "MIT"
+}
