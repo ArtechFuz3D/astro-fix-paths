@@ -8,5 +8,15 @@ An AstroJS integration that fixes output paths for Itch.io deployment.
 npm install astro-fix-paths
 ```
 
-A Live Demo using this integration
-<https://artechfuz3d.itch.io/space-bingo>
+### Add to your astro.config.mjs
+
+```js
+import { defineConfig } from 'astro/config';
+import astroFixPaths from 'astro-fix-paths';
+
+export default defineConfig({
+  integrations: [astroFixPaths()],
+});
+```
+
+[Play Space Bingo - Live Demo](https://artechfuz3d.itch.io/space-bingo)
