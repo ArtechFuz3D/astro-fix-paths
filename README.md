@@ -1,22 +1,32 @@
-# astro-fix-paths
+Astro Itchio Publisher Monorepo
+This monorepo contains:
+package/: The astro-itchio-publisher npm package.
 
-An AstroJS integration that fixes output paths for Itch.io deployment.
+website/: The landing page on GitHub Pages.
 
-## Installation
+Setup
+Install root dependencies:
 
-```sh
-npm install astro-fix-paths
-```
+npm install
 
-### Add to your astro.config.mjs
+Install package dependencies:
 
-```js
-import { defineConfig } from 'astro/config';
-import astroFixPaths from 'astro-fix-paths';
+cd package && npm install
 
-export default defineConfig({
-  integrations: [astroFixPaths()],
-});
-```
+Install website dependencies:
 
-[Play Space Bingo - Live Demo](https://artechfuz3d.itch.io/space-bingo)
+cd website && npm install
+
+Commands
+Build package: npm run build:package
+
+Publish package: npm run publish:package
+
+Build website: npm run build:website
+
+Deploy website: npm run deploy:website
+
+Preview website: cd website && npm run dev
+
+See package/README.md for usage details.
+

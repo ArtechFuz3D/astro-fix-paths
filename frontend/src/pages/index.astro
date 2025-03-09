@@ -1,0 +1,333 @@
+---
+import { defineConfig } from "astro/config";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astro Itchio Publisher</title>
+    <link
+      rel="icon"
+      href="https://astro.build/favicon.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Astro Itchio Publisher</h1>
+      <p class="tagline">
+        Deploy your AstroJS projects to Itch.io with cosmic ease.
+      </p>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h2>What It Does</h2>
+          <p>
+            <strong>Astro Itchio Publisher</strong> is an AstroJS integration that
+            automates your deployment to Itch.io. It fixes paths in your `dist` folder
+            for flawless Itch.io compatibility, zips it up, and optionally uploads
+            it using either the Itch.io API or Butler. Manual uploaders can use it
+            just for path fixing and zipping too!
+          </p>
+        </div>
+      </section>
+      <section class="instructions">
+        <h2>Get Started</h2>
+        <ol>
+          <li>
+            <strong>Install the package:</strong>
+            <pre><code>npm install astro-itchio-publisher</code></pre>
+          </li>
+          <li>
+            <strong>Configure in <code>astro.config.mjs</code>:</strong>
+            <p><em>Choose your method:</em></p>
+            <ul>
+                <li>
+                    <strong>Manual Upload Method (Path Fixing + Zip Only):</strong>
+                    <p>No upload config needed—just add the integration.</p>
+                    <pre><code>{`
+    import { defineConfig } from 'astro/config';
+    import astroItchioPublisher from 'astro-itchio-publisher';
+    
+    export default defineConfig({
+      integrations: [
+        astroItchioPublisher()
+      ],
+    });
+                    `}</code></pre>
+                  </li>
+              <li>
+                <strong>API Method (Automated Upload):</strong>
+                <pre><code>{`
+import { defineConfig } from 'astro/config';
+import astroItchioPublisher from 'astro-itchio-publisher';
+
+export default defineConfig({
+  integrations: [
+    astroItchioPublisher({
+      itchProject: 'your-username/your-game:html5',
+      apiKey: 'your-itchio-api-key', // From https://itch.io/user/settings/api-keys
+    }),
+  ],
+});
+                `}</code></pre>
+              </li>
+              <li>
+                <strong>Butler Method (Automated Upload):</strong>
+                <p>
+                  Install Butler: <a href="https://itch.io/docs/butler/"
+                    >Download</a
+                  > and run <code>butler login</code>.
+                </p>
+                <pre><code>{`
+import { defineConfig } from 'astro/config';
+import astroItchioPublisher from 'astro-itchio-publisher';
+
+export default defineConfig({
+  integrations: [
+    astroItchioPublisher({
+      itchProject: 'your-username/your-game:html5',
+      useButler: true,
+    }),
+  ],
+});
+                `}</code></pre>
+              </li>
+             
+            </ul>
+          </li>
+          <li>
+            <strong>Build your project:</strong>
+            <pre><code>npm run build</code></pre>
+            <p>
+              Fixes paths and zips <code>dist</code> into <code
+                >astro-itchio-publisher-dist.zip</code
+              >. For API/Butler, it uploads automatically; for manual, upload
+              the zip to Itch.io yourself.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section class="cta">
+        <h2>Ready to Launch?</h2>
+        <p>Grab it now and beam your Astro projects to Itch.io!</p>
+        <a
+          href="https://www.npmjs.com/package/astro-itchio-publisher"
+          class="btn">Get it on npm</a
+        >
+        <a
+          href="https://github.com/ArtechFuz3D/astro-itchio-publisher"
+          class="btn secondary">View on GitHub</a
+        >
+      </section>
+    </main>
+    <footer>
+      <p>Made with 🌌 by Neill Hewitt @ArtechFuz3D | Powered by AstroJS & Itch.io</p>
+    </footer>
+
+    <style>
+        :root {
+          --astro-blue: #00b4ff; /* Brighter, punchier blue */
+          --itch-pink: #ff33aa; /* Hotter pink */
+          --glow: #ffffff66; /* Stronger glow */
+          --bg-dark: #0f0f1a; /* Deeper space vibe */
+          --text-light: #f0f0ff; /* Crisper text */
+          --neon-purple: #bb00ff; /* Extra cosmic flair */
+        }
+      
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: "Arial", sans-serif;
+          background: linear-gradient(180deg, var(--bg-dark) 0%, #1a0033 100%); /* Space gradient */
+          color: var(--text-light);
+          line-height: 1.6;
+          overflow-x: hidden;
+        }
+      
+        header {
+          text-align: center;
+          padding: 5rem 2rem;
+          background: linear-gradient(135deg, var(--astro-blue) 0%, var(--itch-pink) 50%, var(--neon-purple) 100%);
+          clip-path: polygon(0 0, 100% 0, 85% 90%, 15% 100%);
+          animation: pulse 4s infinite ease-in-out;
+        }
+      
+        h1 {
+          font-size: 4rem;
+          margin: 0;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          text-shadow: 0 0 15px var(--astro-blue), 0 0 25px var(--itch-pink);
+          animation: neon-flicker 2s infinite alternate;
+        }
+      
+        .tagline {
+          font-size: 1.8rem;
+          font-weight: bold;
+          opacity: 0.95;
+          text-shadow: 0 0 10px var(--glow);
+        }
+      
+        main {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 3rem;
+          position: relative;
+        }
+      
+        .hero {
+          position: relative;
+          padding: 4rem;
+          background: rgba(255, 255, 255, 0.08);
+          border: 3px solid var(--astro-blue);
+          border-radius: 15px;
+          clip-path: polygon(5% 0, 95% 0, 100% 20%, 100% 80%, 95% 100%, 5% 100%, 0 80%, 0 20%);
+          margin-bottom: 4rem;
+          box-shadow: 0 0 20px var(--glow);
+          animation: float 3s infinite ease-in-out;
+        }
+      
+        .hero-content {
+          position: relative;
+          z-index: 1;
+        }
+      
+        .hero::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle, var(--itch-pink) 10%, var(--neon-purple) 40%, transparent 70%);
+          opacity: 0.3;
+          z-index: 0;
+          animation: glow-shift 6s infinite alternate;
+        }
+      
+        h2 {
+          font-size: 2.5rem;
+          color: var(--itch-pink);
+          text-shadow: 0 0 10px var(--astro-blue), 0 0 20px var(--glow);
+          letter-spacing: 1px;
+          margin-bottom: 1.5rem;
+        }
+      
+        .instructions {
+          padding: 3rem;
+          background: rgba(255, 255, 255, 0.05);
+          border-left: 6px solid var(--neon-purple);
+          border-radius: 0 10px 10px 0;
+          box-shadow: 0 0 15px var(--glow);
+        }
+      
+        pre {
+          background: #1a1a2e;
+          padding: 1.5rem;
+          border-radius: 8px;
+          border: 1px solid var(--astro-blue);
+          overflow-x: auto;
+          box-shadow: inset 0 0 10px var(--glow);
+        }
+      
+        code {
+          color: var(--text-light);
+          font-family: "Courier New", monospace;
+          font-weight: bold;
+        }
+      
+        .cta {
+          text-align: center;
+          padding: 4rem 0;
+          position: relative;
+        }
+      
+        .btn {
+          display: inline-block;
+          padding: 1.2rem 2.5rem;
+          background: linear-gradient(45deg, var(--astro-blue), var(--itch-pink));
+          color: white;
+          text-decoration: none;
+          border-radius: 50px;
+          font-weight: bold;
+          font-size: 1.2rem;
+          transition: all 0.4s ease;
+          box-shadow: 0 0 15px var(--astro-blue), 0 0 25px var(--itch-pink);
+          text-transform: uppercase;
+        }
+      
+        .btn:hover {
+          background: linear-gradient(45deg, var(--itch-pink), var(--neon-purple));
+          transform: scale(1.1) rotate(2deg);
+          box-shadow: 0 0 30px var(--glow);
+        }
+      
+        .btn.secondary {
+          background: transparent;
+          border: 3px solid var(--neon-purple);
+          margin-left: 1.5rem;
+          box-shadow: 0 0 15px var(--neon-purple);
+        }
+      
+        .btn.secondary:hover {
+          background: var(--neon-purple);
+          border-color: transparent;
+          transform: scale(1.1) rotate(-2deg);
+        }
+      
+        footer {
+          text-align: center;
+          padding: 3rem;
+          border-top: 2px dashed var(--glow);
+          font-size: 1.1rem;
+          opacity: 0.85;
+          text-shadow: 0 0 5px var(--glow);
+        }
+      
+        /* Animations */
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.9; }
+        }
+      
+        @keyframes neon-flicker {
+          0%, 100% { text-shadow: 0 0 15px var(--astro-blue), 0 0 25px var(--itch-pink); }
+          50% { text-shadow: 0 0 20px var(--astro-blue), 0 0 35px var(--itch-pink); }
+        }
+      
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+      
+        @keyframes glow-shift {
+          0% { background-position: 0 0; }
+          50% { background-position: 100% 100%; }
+          100% { background-position: 0 0; }
+        }
+      
+        @media (max-width: 600px) {
+          h1 {
+            font-size: 2.8rem;
+          }
+          .tagline {
+            font-size: 1.3rem;
+          }
+          .hero {
+            padding: 2.5rem;
+            clip-path: polygon(5% 0, 95% 0, 100% 30%, 100% 70%, 95% 100%, 5% 100%, 0 70%, 0 30%);
+          }
+          h2 {
+            font-size: 1.8rem;
+          }
+          .btn {
+            display: block;
+            margin: 1rem auto;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+          }
+        }
+      </style>
+  </body>
+</html>

@@ -1,15 +1,26 @@
 {
-  "name": "astro-fix-paths",
-  "version": "1.0.4",
-  "description": "An AstroJS integration that fixes output paths for Itch.io deployment.",
-  "repository": "https://github.com/ArtechFuz3D/astro-fix-paths",
-  "homepage": "https://github.com/ArtechFuz3D/astro-fix-paths",
-  "main": "astro-fix-paths.js",
-  "type": "module",
-  "exports": {
-    "default": "./astro-fix-paths.js"
+  "name": "astro-itchio-publisher-monorepo",
+  "version": "1.0.0",
+  "description": "monorepo for astro package and frontend website",
+  "main": "index.js",
+  "scripts": {
+    "build:package": "cd ./package && npm run build",
+    "publish:package": "cd ./package && npm publish",
+    "build:website": "cd ./frontend && npm run build",
+    "deploy:website": "gh-pages -d frontend/dist"
   },
-  "keywords": ["astro-component", "withastro", "astro", "astrojs", "integration", "fix-paths", "utilities", "itchio"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtechFuz3D/astro-itchio-publisher.git"
+  },
   "author": "Neill Hewitt",
-  "license": "MIT"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArtechFuz3D/astro-itchio-publisher/issues"
+  },
+  "homepage": "https://github.com/ArtechFuz3D/astro-itchio-publisher#readme",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af"
 }
