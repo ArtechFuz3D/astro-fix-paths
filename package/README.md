@@ -1,38 +1,26 @@
-# astro-fix-paths
+# Astro Itchio Publisher
 
-An AstroJS integration that fixes output paths for Itch.io deployment.
+An AstroJS integration that automates deployment to Itch.io by fixing paths, zipping your `dist` folder, and optionally uploading it via the Itch.io API or Butler. Perfect for manual uploads too—just fix paths and zip!
 
 ## Installation
 
 ```sh
-npm install astro-fix-paths
-```
-
-### Add to your astro.config.mjs
-
-```js
-import { defineConfig } from 'astro/config';
-import astroFixPaths from 'astro-fix-paths';
-
-export default defineConfig({
-  integrations: [astroFixPaths()],
-});
-```
-
-[Play Space Bingo - Live Demo](https://artechfuz3d.itch.io/space-bingo)
-
-
-Astro Itchio Publisher
-An AstroJS integration that automates deployment to Itch.io by fixing paths, zipping your dist folder, and uploading it via the Itch.io API or Butler.
-Usage
-Install the package:
-
 npm install astro-itchio-publisher
+```
 
-Configure in astro.config.mjs:
-API Method (Default):
-javascript
+## Usage
 
+### Install the package:
+
+```sh
+npm install astro-itchio-publisher
+```
+
+### Configure in `astro.config.mjs`:
+
+#### API Method (Automated Upload):
+
+```javascript
 import { defineConfig } from 'astro/config';
 import astroItchioPublisher from 'astro-itchio-publisher';
 
@@ -44,12 +32,13 @@ export default defineConfig({
     })
   ]
 });
+```
 
-Butler Method:
-Install Butler: Download and run butler login.
+#### Butler Method (Automated Upload):
 
-javascript
+**Install Butler**: Download and run `butler login`.
 
+```javascript
 import { defineConfig } from 'astro/config';
 import astroItchioPublisher from 'astro-itchio-publisher';
 
@@ -61,22 +50,47 @@ export default defineConfig({
     })
   ]
 });
+```
 
-Build and Deploy:
+#### Manual Upload Method (Path Fixing + Zip Only):
 
+No upload config needed—just add the integration.
+
+```javascript
+import { defineConfig } from 'astro/config';
+import astroItchioPublisher from 'astro-itchio-publisher';
+
+export default defineConfig({
+  integrations: [
+    astroItchioPublisher()
+  ]
+});
+```
+
+### Build your project:
+
+```sh
 npm run build
+```
 
-Fixes paths, zips dist, and uploads to Itch.io using your chosen method.
+This fixes paths and zips `dist` into `astro-itchio-publisher-dist.zip`.
 
-Options
-itchProject: Your Itch.io project (e.g., username/project:channel).
+- For API/Butler, it uploads automatically.
+- For manual, upload the zip to Itch.io yourself.
 
-apiKey: Required for API method, from Itch.io settings.
+## Options
 
-useButler: Set to true for Butler, false for API (default: false).
+- `itchProject`: Your Itch.io project (e.g., `username/project:channel`).
+- `apiKey`: Required for API method, from Itch.io settings.
+- `useButler`: Set to `true` for Butler, `false` for API (default: `false`).
 
-Links
-npm
+## Links
 
-GitHub
+- [npm](https://www.npmjs.com/package/astro-itchio-publisher)
+- [GitHub](https://github.com/ArtechFuz3D/astro-itchio-publisher)
+- [HomePage](https://artechfuz3d.github.io/astro-itchio-publisher/)
+- [Live Demo](https://artechfuz3d.itch.io/space-bingo)
 
+## Contributing
+
+Built with ❤️ by Neill Hewitt. Open issues or PRs on GitHub!
